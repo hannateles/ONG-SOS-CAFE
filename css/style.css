@@ -21,7 +21,6 @@ body {
     line-height: 1.6;
     color: #333;
     padding-top: 80px;
-    /* espaço para header fixo */
 }
 
 
@@ -68,7 +67,6 @@ body {
 /* AJUSTE PARA OS LINKS DO MENU */
 
 .header .menu a {
-    /* MUDANÇA: Cor do link para escuro */
     color: #2F4F4F;
     text-decoration: none;
     font-weight: bold;
@@ -87,27 +85,16 @@ body {
 
 /* ===== ESTADO ATIVO DO MENU (PÁGINA ATUAL) ===== */
 
-
-/* 1. Indicativo: Mudar a cor para destaque (usando o marrom escuro da sua logo) */
-
 .menu a.pagina-atual {
     color: #2F4F4F;
-    /* Cor do texto mais escura para indicar que está ativo */
     font-weight: bold;
-    /* Deixa o texto em negrito */
     border-bottom: 3px solid #FF8C00;
 }
 
-
-/* 2. Desativar: Remover o efeito de hover na página atual */
-
 .menu a.pagina-atual:hover {
     color: #2F4F4F;
-    /* Força a cor a ser a mesma do estado normal */
     background-color: transparent;
-    /* Remove qualquer fundo de hover */
     cursor: default;
-    /* Muda o ícone do mouse para o padrão (sem ser link) */
 }
 
 
@@ -115,9 +102,7 @@ body {
 
 .hero {
     color: #fff;
-    /* RESTAURADO: Volta à altura visualmente correta */
     min-height: calc(100vh - 80px);
-    /* REMOVIDO: height: 45vh; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -127,23 +112,18 @@ body {
     position: relative;
     padding: 0;
     overflow: hidden;
-    /* Garante que não haja margem externa */
     margin: 0 !important;
 }
 
 .hero-content {
-    /* Contêiner de texto para o título e subtítulo */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-    /* Garante que o texto fique acima do banner */
     width: 80%;
-    /* Limita a largura do texto para melhor leitura em telas grandes */
     max-width: 800px;
     background-color: rgba(0, 0, 0, 0.4);
-    /* Fundo semi-transparente para o texto ficar legível sobre qualquer imagem */
     padding: 20px;
     border-radius: 10px;
 }
@@ -164,11 +144,8 @@ body {
 }
 
 section.hero {
-    /* Força a margem e o preenchimento na parte de baixo a zero */
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-    /* Se a altura dele estiver muito grande, ajuste aqui (ex: 40vh) */
-    /* height: 40vh; */
 }
 
 
@@ -176,19 +153,14 @@ section.hero {
 
 .banner-container {
     position: absolute;
-    /* Posição absoluta para cobrir todo o Hero */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Garante que o carrossel preencha a altura do Hero */
     max-width: none;
-    /* <--- CHAVE 1: Remove a limitação de 900px */
     margin: 0;
-    /* <--- CHAVE 2: Remove a margem automática */
     overflow: hidden;
     border-radius: 0;
-    /* <--- CHAVE 3: Remove o arredondamento de borda para o Full Screen */
 }
 
 .carousel-slide {
@@ -200,9 +172,7 @@ section.hero {
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    /* <--- CHAVE 4: Estica a imagem na altura */
     object-fit: cover;
-    /* <--- CHAVE 5: A imagem irá cobrir o espaço, cortando as bordas se necessário, mas sem distorcer. */
     position: absolute;
     top: 0;
     left: 0;
@@ -215,50 +185,32 @@ section.hero {
     position: relative;
 }
 
-
-/* Os botões e indicadores (dots) não precisam de alteração, mas os indicadores podem precisar de um z-index para ficar acima da imagem: */
-
 .indicators {
-    /* ... (restante do código) */
     z-index: 6;
-    /* Garante que os indicadores fiquem visíveis */
 }
-
-
-/* ===== Destaque ===== */
 
 
 /* ===== Estilização da Nova Seção de Missão (Usando a classe .destaque) ===== */
 
-
-/* Garante o padding e centralização da caixa de texto */
-
 .destaque {
-    /* CHAVE 1: Zera qualquer margem superior que esteja sobrando */
     margin-top: 0 !important;
-    /* CHAVE 2: Remove o padding superior que estava criando o VÃO BRANCO */
     padding-top: 0 !important;
     padding-bottom: 80px;
-    /* Mantém o espaçamento na parte de baixo */
     width: 100%;
     background-color: #ffffff;
 }
 
 .destaque .content-missao {
     padding: 0 20px;
-    /* Usa o padding já definido em .destaque */
     max-width: 1000px;
     margin: 0 auto;
 }
 
 .destaque .bloco-texto {
-    /* Adiciona um pequeno espaço interno acima do H2 */
     padding-top: 30px;
-    /* Garante que o bloco interno não tenha margens */
 }
 
 .destaque h2 {
-    /* Garante que o H2 não crie margem extra */
     margin-top: 0 !important;
 }
 
@@ -269,14 +221,12 @@ section.hero {
 .destaque h2 {
     font-size: 2.5rem;
     color: #2F4F4F;
-    /* Marrom escuro */
 }
 
 .destaque .subtitulo-missao {
     font-size: 1.3rem;
     margin-bottom: 40px;
     color: #60B6A7;
-    /* Verde Água da logo */
 }
 
 
@@ -303,18 +253,16 @@ section.hero {
 
 .destaque .lista-missoes div {
     flex: 1;
-    /* Garante que as colunas ocupem espaço igual */
 }
 
 .destaque .lista-missoes h4 {
     font-size: 1.4rem;
     color: #FF8C00;
-    /* Laranja Vívido (do banner) para destaque */
     margin-bottom: 10px;
 }
 
 
-/* Garante que o layout fique em coluna em telas pequenas (mobile) */
+/* --- RESPONSIVIDADE --- */
 
 @media (max-width: 768px) {
     .destaque .lista-missoes {
@@ -324,13 +272,7 @@ section.hero {
 }
 
 
-/* ========================================================= */
-
-
-/* ===== NOVO: LAYOUT PRINCIPAL DE 2 COLUNAS (IMAGEM + TEXTO) ===== */
-
-
-/* ========================================================= */
+/* ===== LAYOUT PRINCIPAL DE 2 COLUNAS (IMAGEM + TEXTO) ===== */
 
 .destaque .missao-layout-colunas {
     display: flex;
@@ -511,33 +453,23 @@ footer {
 }
 
 
-/* ===== NOVO: SOLUÇÃO COM FLOAT (IMAGEM LATERAL) ===== */
+/* ===== IMAGEM LATERAL===== */
 
 .imagem-float-esquerda {
     float: left;
-    /* Move a imagem para o lado esquerdo */
     margin-right: 30px;
-    /* Espaço entre a imagem e o texto */
     margin-bottom: 20px;
     max-width: 350px;
-    /* Garante que a imagem não fique gigante */
     width: 40%;
-    /* Ocupa 40% do espaço em telas grandes */
     height: auto;
     border-radius: 10px;
 }
 
-
-/* CHAVE: Força a lista de missões a ficar abaixo da imagem que está flutuando */
-
 .destaque .lista-missoes {
     clear: both;
-    /* ESSENCIAL */
-    /* Mantém o display: flex para as 3 caixas internas: */
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    /* Adiciona o espaço após o texto principal */
     margin-top: 50px;
     text-align: left;
 }
@@ -548,14 +480,11 @@ footer {
 @media (max-width: 992px) {
     .imagem-float-esquerda {
         float: none;
-        /* Remove o float em mobile */
         display: block;
         margin: 0 auto 30px auto;
-        /* Centraliza a imagem */
         width: 80%;
         max-width: 400px;
     }
-    /* Garante que as 3 caixas empilhem em mobile */
     .destaque .lista-missoes {
         flex-direction: column;
         gap: 20px;
@@ -563,10 +492,7 @@ footer {
 }
 
 
-/* ===== ESTILIZAÇÃO DA SEÇÃO MANIFESTO (SOBRE) ===== */
-
-
-/* ===== SEÇÃO: SOBRE A ORGANIZAÇÃO ===== */
+/* ===== ESTILIZAÇÃO DA SEÇÃO SOBRE ===== */
 
 .sobre-ong {
     background-color: #ffffff;
@@ -624,7 +550,7 @@ footer {
 }
 
 
-/* ===== MANIFESTO CARDS ===== */
+/* ===== SOBRE CARDS ===== */
 
 .manifesto-cards {
     display: flex;
@@ -755,16 +681,7 @@ footer {
 }
 
 
-/* ========================================================= */
-
-
-/* ===== PÁGINA PROJETOS: LAYOUT 2 COLUNAS (Texto + Carrossel) ===== */
-
-
-/* ========================================================= */
-
-
-/* Container Principal do Conteúdo (Se você não tiver esta classe centralizada) */
+/* ===== PÁGINA PROJETOS ===== */
 
 .content-principal {
     max-width: 1200px;
@@ -855,25 +772,17 @@ footer {
 }
 
 
-/* ========================================================= */
-
-
 /* ===== GALERIA DE PROJETOS (CARROSSEL + LIGHTBOX) ===== */
-
-
-/* ========================================================= */
 
 .carousel-container {
     position: relative;
     overflow: hidden;
     width: 50%;
-    /* Ocupa a outra metade do layout de 2 colunas */
     margin: 0;
 }
 
 .carousel {
     display: flex;
-    /* <-- CHAVE: Coloca as imagens do carrossel lado a lado (horizontal) */
     width: 100%;
     transition: transform 0.5s ease-in-out;
     gap: 15px;
@@ -882,7 +791,6 @@ footer {
 .carousel img {
     flex-shrink: 0;
     width: calc(33.333% - 10px);
-    /* Mostra 3 imagens por vez */
     height: 250px;
     object-fit: cover;
     border-radius: 8px;
@@ -1001,11 +909,9 @@ footer {
 h1,
 h2,
 h3 {
-    /* Garante que todos os títulos usem a cor principal do site */
     color: var(--cor-primaria, #2F4F4F);
     margin-bottom: 15px;
     font-weight: bold;
-    /* Linha de separação discreta (opcional, mas dá um toque moderno) */
     padding-bottom: 5px;
 }
 
@@ -1014,16 +920,11 @@ h3 {
 
 h1 {
     font-size: 3rem;
-    /* Tamanho maior para o título principal */
     letter-spacing: -1px;
-    /* Espaçamento levemente negativo para um visual mais "junto" e moderno */
     text-transform: uppercase;
-    /* Deixa em caixa alta para mais impacto */
-    /* Adiciona uma sombra suave para destacar sobre o fundo */
     text-shadow: 1px 1px 2px rgba(109, 109, 109, 0.1);
     border-bottom: 3px solid var(--cor-destaque, #FF8C00);
     display: inline-block;
-    /* Ajusta o border-bottom apenas ao redor do texto */
     padding-bottom: 10px;
     margin-bottom: 30px;
 }
