@@ -2,7 +2,7 @@
 
 ![Logo da S.O.S Café](img/logo_sem_fundo.png)
 
-> **Versão:** 1.4  
+> **Versão:** 1.5 
 > Projeto acadêmico desenvolvido com humor e propósito: garantir o direito fundamental do programador — **a cafeína!**
 > Para acessar o site: https://hannateles.github.io/ONG-SOS-CAFE/index.html
 ---
