@@ -270,3 +270,14 @@ prevBtn.addEventListener('click', () => moveCarousel('prev'));
 
 // Movimento automático
 setInterval(() => moveCarousel('next'), 3000);
+
+//botões doação
+document.querySelector('.btn-cartao').addEventListener('click', function(event) {
+    event.preventDefault(); // evita o recarregamento da página
+    alert('Em breve você poderá doar com cartão! 😊');
+});
+
+document.querySelector('.btn-recorrente').addEventListener('click', function(event) {
+    event.preventDefault();
+    alert('Em breve você poderá apoiar mensalmente! 💛');
+});
