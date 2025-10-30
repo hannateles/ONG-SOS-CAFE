@@ -1,0 +1,1049 @@
+/* ===== Reset básico ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* ===== Variáveis de cores ===== */
+
+:root {
+    --logo-green: #60B6A7;
+}
+
+
+/* ===== Corpo ===== */
+
+body {
+    line-height: 1.6;
+    color: #333;
+    padding-top: 80px;
+    /* espaço para header fixo */
+}
+
+
+/* ===== Header fixo ===== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(to bottom, #FFFFFF);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.header .logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.header .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+/* AJUSTE PARA O TEXTO DA LOGO */
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* MUDANÇA: Cor do texto da logo para escuro */
+    color: #2F4F4F;
+}
+
+
+/* AJUSTE PARA OS LINKS DO MENU */
+
+.header .menu a {
+    /* MUDANÇA: Cor do link para escuro */
+    color: #2F4F4F;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.header .menu a:hover {
+    background-color: var(--logo-green);
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ===== ESTADO ATIVO DO MENU (PÁGINA ATUAL) ===== */
+
+
+/* 1. Indicativo: Mudar a cor para destaque (usando o marrom escuro da sua logo) */
+
+.menu a.pagina-atual {
+    color: #2F4F4F;
+    /* Cor do texto mais escura para indicar que está ativo */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    border-bottom: 3px solid #FF8C00;
+}
+
+
+/* 2. Desativar: Remover o efeito de hover na página atual */
+
+.menu a.pagina-atual:hover {
+    color: #2F4F4F;
+    /* Força a cor a ser a mesma do estado normal */
+    background-color: transparent;
+    /* Remove qualquer fundo de hover */
+    cursor: default;
+    /* Muda o ícone do mouse para o padrão (sem ser link) */
+}
+
+
+/* ===== Hero Full Screen ===== */
+
+.hero {
+    color: #fff;
+    /* RESTAURADO: Volta à altura visualmente correta */
+    min-height: calc(100vh - 80px);
+    /* REMOVIDO: height: 45vh; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    /* Garante que não haja margem externa */
+    margin: 0 !important;
+}
+
+.hero-content {
+    /* Contêiner de texto para o título e subtítulo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    /* Garante que o texto fique acima do banner */
+    width: 80%;
+    /* Limita a largura do texto para melhor leitura em telas grandes */
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fundo semi-transparente para o texto ficar legível sobre qualquer imagem */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.content-missao {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+section.hero {
+    /* Força a margem e o preenchimento na parte de baixo a zero */
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    /* Se a altura dele estiver muito grande, ajuste aqui (ex: 40vh) */
+    /* height: 40vh; */
+}
+
+
+/* ===== Carrossel ===== */
+
+.banner-container {
+    position: absolute;
+    /* Posição absoluta para cobrir todo o Hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Garante que o carrossel preencha a altura do Hero */
+    max-width: none;
+    /* <--- CHAVE 1: Remove a limitação de 900px */
+    margin: 0;
+    /* <--- CHAVE 2: Remove a margem automática */
+    overflow: hidden;
+    border-radius: 0;
+    /* <--- CHAVE 3: Remove o arredondamento de borda para o Full Screen */
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    /* <--- CHAVE 4: Estica a imagem na altura */
+    object-fit: cover;
+    /* <--- CHAVE 5: A imagem irá cobrir o espaço, cortando as bordas se necessário, mas sem distorcer. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide img.active {
+    opacity: 1;
+    position: relative;
+}
+
+
+/* Os botões e indicadores (dots) não precisam de alteração, mas os indicadores podem precisar de um z-index para ficar acima da imagem: */
+
+.indicators {
+    /* ... (restante do código) */
+    z-index: 6;
+    /* Garante que os indicadores fiquem visíveis */
+}
+
+
+/* ===== Destaque ===== */
+
+
+/* ===== Estilização da Nova Seção de Missão (Usando a classe .destaque) ===== */
+
+
+/* Garante o padding e centralização da caixa de texto */
+
+.destaque {
+    /* CHAVE 1: Zera qualquer margem superior que esteja sobrando */
+    margin-top: 0 !important;
+    /* CHAVE 2: Remove o padding superior que estava criando o VÃO BRANCO */
+    padding-top: 0 !important;
+    padding-bottom: 80px;
+    /* Mantém o espaçamento na parte de baixo */
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.destaque .content-missao {
+    padding: 0 20px;
+    /* Usa o padding já definido em .destaque */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.destaque .bloco-texto {
+    /* Adiciona um pequeno espaço interno acima do H2 */
+    padding-top: 30px;
+    /* Garante que o bloco interno não tenha margens */
+}
+
+.destaque h2 {
+    /* Garante que o H2 não crie margem extra */
+    margin-top: 0 !important;
+}
+
+.destaque .bloco-texto:first-child h2 {
+    margin-top: 0;
+}
+
+.destaque h2 {
+    font-size: 2.5rem;
+    color: #2F4F4F;
+    /* Marrom escuro */
+}
+
+.destaque .subtitulo-missao {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #60B6A7;
+    /* Verde Água da logo */
+}
+
+
+/* Estilo para as linhas divisórias */
+
+.destaque hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 40px auto;
+    width: 80%;
+}
+
+
+/* Configura as 3 colunas de missão usando Flexbox */
+
+.destaque .lista-missoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    text-align: left;
+    /* Alinha o texto das colunas à esquerda */
+    margin-top: 30px;
+}
+
+.destaque .lista-missoes div {
+    flex: 1;
+    /* Garante que as colunas ocupem espaço igual */
+}
+
+.destaque .lista-missoes h4 {
+    font-size: 1.4rem;
+    color: #FF8C00;
+    /* Laranja Vívido (do banner) para destaque */
+    margin-bottom: 10px;
+}
+
+
+/* Garante que o layout fique em coluna em telas pequenas (mobile) */
+
+@media (max-width: 768px) {
+    .destaque .lista-missoes {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+
+/* ========================================================= */
+
+
+/* ===== NOVO: LAYOUT PRINCIPAL DE 2 COLUNAS (IMAGEM + TEXTO) ===== */
+
+
+/* ========================================================= */
+
+.destaque .missao-layout-colunas {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.destaque .missao-imagem-coluna {
+    flex: 1;
+    max-width: 40%;
+}
+
+.destaque .missao-texto-coluna {
+    flex: 1.5;
+    max-width: 60%;
+    text-align: left;
+}
+
+.destaque .missao-imagem-coluna .imagem-missao-lateral {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 992px) {
+    .destaque .missao-layout-colunas {
+        flex-direction: column;
+    }
+    .destaque .missao-imagem-coluna,
+    .destaque .missao-texto-coluna {
+        max-width: 100%;
+        text-align: center;
+    }
+    .destaque .lista-missoes {
+        flex-direction: column;
+    }
+}
+
+
+/* ===== Ação ===== */
+
+.acao {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff0e6;
+}
+
+.acao button {
+    background: #d2691e;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.acao button:hover {
+    background-color: var(--logo-green);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.acao p {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ===== Footer ===== */
+
+footer {
+    background: #6f4e37;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Botões de navegação */
+
+.banner-container button.prev,
+.banner-container button.next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 28px;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.banner-container button.prev:hover,
+.banner-container button.next:hover {
+    background-color: var(--logo-green);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Indicadores de bolinhas */
+
+.indicators {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.indicators .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.indicators .dot.active,
+.indicators .dot:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+}
+
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .destaque h2,
+    .acao h2 {
+        font-size: 1.5rem;
+    }
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+    .header .menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .banner-container button.prev,
+    .banner-container button.next {
+        font-size: 20px;
+        padding: 8px;
+    }
+    .indicators .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 3px;
+    }
+}
+
+
+/* ===== NOVO: SOLUÇÃO COM FLOAT (IMAGEM LATERAL) ===== */
+
+.imagem-float-esquerda {
+    float: left;
+    /* Move a imagem para o lado esquerdo */
+    margin-right: 30px;
+    /* Espaço entre a imagem e o texto */
+    margin-bottom: 20px;
+    max-width: 350px;
+    /* Garante que a imagem não fique gigante */
+    width: 40%;
+    /* Ocupa 40% do espaço em telas grandes */
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* CHAVE: Força a lista de missões a ficar abaixo da imagem que está flutuando */
+
+.destaque .lista-missoes {
+    clear: both;
+    /* ESSENCIAL */
+    /* Mantém o display: flex para as 3 caixas internas: */
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    /* Adiciona o espaço após o texto principal */
+    margin-top: 50px;
+    text-align: left;
+}
+
+
+/* Garante que o layout das 3 caixas seja sempre responsivo, mesmo com float */
+
+@media (max-width: 992px) {
+    .imagem-float-esquerda {
+        float: none;
+        /* Remove o float em mobile */
+        display: block;
+        margin: 0 auto 30px auto;
+        /* Centraliza a imagem */
+        width: 80%;
+        max-width: 400px;
+    }
+    /* Garante que as 3 caixas empilhem em mobile */
+    .destaque .lista-missoes {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+
+/* ===== ESTILIZAÇÃO DA SEÇÃO MANIFESTO (SOBRE) ===== */
+
+
+/* ===== SEÇÃO: SOBRE A ORGANIZAÇÃO ===== */
+
+.sobre-ong {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    color: #2F4F4F;
+}
+
+.sobre-ong .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sobre-ong h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #FF8C00;
+}
+
+
+/* BLOCO COM IMAGEM AO LADO */
+
+.sobre-bloco {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.sobre-bloco.reverse {
+    flex-direction: row-reverse;
+}
+
+.sobre-bloco img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-bloco .texto {
+    flex: 1;
+}
+
+.sobre-bloco .texto h3 {
+    font-size: 1.8rem;
+    color: #2F4F4F;
+    margin-bottom: 10px;
+}
+
+.sobre-bloco .texto p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+
+/* ===== MANIFESTO CARDS ===== */
+
+.manifesto-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.manifesto-card {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f7f7f7;
+    padding: 25px;
+    border-left: 5px solid #60B6A7;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.manifesto-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #2F4F4F;
+}
+
+.manifesto-card p {
+    color: #555;
+}
+
+
+/* ===== PILARES (STACK) EM CARDS ===== */
+
+.stack-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+.stack-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.stack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stack-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #FF8C00;
+}
+
+.stack-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2F4F4F;
+}
+
+.stack-card p {
+    color: #555;
+}
+
+
+/* ===== BOTÕES DE AÇÃO (DOAÇÃO/VOLUNTARIADO) ===== */
+
+.botoes-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.botoes-cta a {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.botoes-cta .botao-principal {
+    background-color: #FF8C00;
+    color: white;
+}
+
+.botoes-cta .botao-principal:hover {
+    background-color: #e67600;
+}
+
+.botoes-cta .botao-secundario {
+    border: 2px solid #2F4F4F;
+    color: #2F4F4F;
+    background-color: transparent;
+}
+
+.botoes-cta .botao-secundario:hover {
+    background-color: #2F4F4F;
+    color: white;
+}
+
+
+/* ===== RESPONSIVIDADE DAS SEÇÕES SOBRE ===== */
+
+@media (max-width: 992px) {
+    .sobre-bloco {
+        flex-direction: column;
+        text-align: center;
+    }
+    .sobre-bloco.reverse {
+        flex-direction: column;
+    }
+    .sobre-bloco img {
+        max-width: 100%;
+    }
+    .manifesto-cards,
+    .stack-cards {
+        flex-direction: column;
+    }
+}
+
+
+/* ========================================================= */
+
+
+/* ===== PÁGINA PROJETOS: LAYOUT 2 COLUNAS (Texto + Carrossel) ===== */
+
+
+/* ========================================================= */
+
+
+/* Container Principal do Conteúdo (Se você não tiver esta classe centralizada) */
+
+.content-principal {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+
+/* --- Container Principal do Projeto (Layout de 2 Colunas) --- */
+
+.projeto-bloco {
+    display: flex;
+    /* <-- CHAVE: Coloca o texto e o carrossel lado a lado */
+    gap: 40px;
+    margin: 60px 0;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--cor-fundo-claro, #FFFFFF);
+    align-items: flex-start;
+}
+
+
+/* Coluna de Descrição/Texto */
+
+.projeto-info-coluna {
+    flex: 1;
+    max-width: 50%;
+    /* Ocupa metade da largura */
+}
+
+
+/* Títulos do Projeto */
+
+.projeto-bloco h3 {
+    text-align: left;
+    color: var(--cor-primaria, #2F4F4F);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.projeto-bloco h3 i {
+    margin-right: 10px;
+    color: var(--cor-destaque, #FF8C00);
+}
+
+
+/* Classe para inverter a ordem */
+
+.projeto-bloco.reverse {
+    flex-direction: row-reverse;
+}
+
+
+/* --- ESTILO DOS BOTÕES DE AÇÃO INTERNA --- */
+
+.botao-principal-projeto {
+    background-color: var(--cor-destaque, #FF8C00);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.botao-principal-projeto:hover {
+    background-color: #e57f00;
+}
+
+.botao-secundario-projeto {
+    background-color: transparent;
+    color: var(--cor-primaria, #2F4F4F);
+    border: 2px solid var(--cor-primaria, #2F4F4F);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.botao-secundario-projeto:hover {
+    background-color: var(--cor-primaria, #2F4F4F);
+    color: white;
+}
+
+
+/* ========================================================= */
+
+
+/* ===== GALERIA DE PROJETOS (CARROSSEL + LIGHTBOX) ===== */
+
+
+/* ========================================================= */
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+    /* Ocupa a outra metade do layout de 2 colunas */
+    margin: 0;
+}
+
+.carousel {
+    display: flex;
+    /* <-- CHAVE: Coloca as imagens do carrossel lado a lado (horizontal) */
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    gap: 15px;
+}
+
+.carousel img {
+    flex-shrink: 0;
+    width: calc(33.333% - 10px);
+    /* Mostra 3 imagens por vez */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.carousel img:hover {
+    transform: scale(1.02);
+}
+
+
+/* Estilo das setas do carrossel */
+
+.carousel-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.carousel-container button:hover {
+    background-color: var(--cor-destaque, #FF8C00);
+}
+
+.carousel-container .prev {
+    left: 10px;
+}
+
+.carousel-container .next {
+    right: 10px;
+}
+
+
+/* --- LIGHTBOX (Modal para imagem expandida) --- */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation-duration: 0.6s;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+/* --- RESPONSIVIDADE DO CARROSSEL --- */
+
+@media (max-width: 850px) {
+    /* Empilha projetos (Texto + Galeria) */
+    .projeto-bloco {
+        flex-direction: column;
+        /* Transforma em uma única coluna */
+        gap: 30px;
+    }
+    .projeto-info-coluna,
+    .carousel-container {
+        max-width: 100%;
+        /* Ocupa a largura total */
+        width: 100%;
+    }
+    /* Carrossel em Tablets (2 imagens) */
+    .carousel img {
+        width: calc(50% - 7.5px);
+        height: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Carrossel em Mobile (1 imagem) */
+    .carousel img {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+
+/**** seção para o h1 *****/
+
+
+/* AJUSTE: Estilos padrão para todos os cabeçalhos */
+
+h1,
+h2,
+h3 {
+    /* Garante que todos os títulos usem a cor principal do site */
+    color: var(--cor-primaria, #2F4F4F);
+    margin-bottom: 15px;
+    font-weight: bold;
+    /* Linha de separação discreta (opcional, mas dá um toque moderno) */
+    padding-bottom: 5px;
+}
+
+
+/* ESTILO ESPECÍFICO PARA O H1: Grande e de Impacto */
+
+h1 {
+    font-size: 3rem;
+    /* Tamanho maior para o título principal */
+    letter-spacing: -1px;
+    /* Espaçamento levemente negativo para um visual mais "junto" e moderno */
+    text-transform: uppercase;
+    /* Deixa em caixa alta para mais impacto */
+    /* Adiciona uma sombra suave para destacar sobre o fundo */
+    text-shadow: 1px 1px 2px rgba(109, 109, 109, 0.1);
+    border-bottom: 3px solid var(--cor-destaque, #FF8C00);
+    display: inline-block;
+    /* Ajusta o border-bottom apenas ao redor do texto */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+
+/*Estiliza o H1 na seção de Projetos*/
+
+.content-principal h1 {
+    border-bottom: 3px solid var(--cor-destaque, #FF8C00);
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+
+/* Responsividade para H1 em telas menores */
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+        /* Reduz o tamanho para caber no celular */
+    }
+}

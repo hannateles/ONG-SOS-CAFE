@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Contato | S.O.S. Café ☕</title>
+    <link rel="icon" type="image/icon" href="img/logo_sem_fundo.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo_sem_fundo.png" alt="S.O.S Café Logo">
+        </div>
+        <nav class="menu">
+            <a href="index.html">Página Inicial</a>
+            <a href="sobre.html">Sobre a Organização</a>
+            <a href="projetos.html">Projetos Sociais</a>
+            <a href="cadastro.html">Voluntariado</a>
+            <a href="doacoes.html">Como Doar</a>
+            <a href="contato.html" class="pagina-atual">Contato</a>
+        </nav>
+    </header>
+    <section class="content-principal">
+
+        <div class="bloco-texto texto-centralizado">
+            <h1>Contato</h1>
+
+        </div>
+        <br>
+        <br>
+        <hr>
+        <form id="formContatoGeral" class="form-voluntario">
+
+            <h3>Fale Conosco (Informações Básicas)</h3>
+
+            <div class="form-group">
+                <label for="nome"><i class="fas fa-user"></i> Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email de Contato:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone"><i class="fas fa-phone"></i> Telefone / WhatsApp:</label>
+                <input type="tel" id="telefone" name="telefone" required placeholder="(00)00000-0000">
+            </div>
+
+            <div class="form-group">
+                <label for="assunto"><i class="fas fa-code-branch"></i> Qual o Motivo do Seu Contato? <abbr title="Obrigatório">*</abbr></label>
+                <select id="assunto" name="assunto" required>
+            <option value="" disabled selected>-- Selecione para direcionar sua mensagem --</option>
+            <option value="denuncia_interna">🔴 Denúncia (Ex: Falta de café, problemas internos)</option>
+            <option value="transparencia_doador">💎 Transparência / Pedido de Dados (Para Doadores)</option>
+            <option value="ajuda_voluntario">🤝 Ajuda / Contato Voluntário (Já sou voluntário)</option>
+            <option value="pergunta_geral">💬 Pergunta / Comentário Geral</option>
+        </select>
+            </div>
+            <div class="form-group">
+                <label for="mensagem"><i class="fas fa-comments"></i> Descreva sua Mensagem / Detalhes:</label>
+                <textarea id="detalhes" name="detalhes" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="botao-principal-projeto">
+        <i class="fas fa-paper-plane"></i> Enviar Contato
+    </button>
+
+            <div id="mensagemSucesso" class="mensagem-sucesso">
+                <i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.
+            </div>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 S.O.S. Café. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/forms.js"></script>
+</body>
+
+</html>
